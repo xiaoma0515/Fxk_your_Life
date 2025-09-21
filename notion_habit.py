@@ -4,7 +4,7 @@ from datetime import date
 
 # 从 GitHub Secrets 获取 Token 和 Database ID
 NOTION_TOKEN = os.environ['NOTION_TOKEN']
-DATABASE_ID = os.environ['NOTION_DATABASE_ID']
+DATABASE_ID = os.environ['NOTION_HABITTRACKER_DATABASE_ID']
 
 headers = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
@@ -16,7 +16,10 @@ today = date.today().isoformat()  # 例如 '2025-09-21'
 
 # Gym 列关联的页面 ID（需要提前获取 Gym 表中你要关联的页面 ID）
 gym_page_ids = [
-    "gym-page-id-1",  # 替换成 Gym 表中某个页面的 ID
+    "27519fe696fa801fa375d97eaf7105e8",  # 替换成 Gym 表中某个页面的 ID
+    "27519fe696fa8001b9c0c407d30dfde8",  # 替换成 Gym 表中某个页面的 ID
+    "27519fe696fa8060925ad8a87d58b2e4",  # 替换成 Gym 表中某个页面的 ID
+    "27519fe696fa8020ac72c260ecdc428c",  # 替换成 Gym 表中某个页面的 ID
 ]
 
 data = {
@@ -26,8 +29,8 @@ data = {
         "Date": {"date": {"start": today}},
         "Gym": {"relation": [{"id": gid} for gid in gym_page_ids]},
         "Workout": {"checkbox": False},
-        "Checkbox 1": {"checkbox": False},
-        "Checkbox 2": {"checkbox": False}
+        "Duolingo": {"checkbox": False},
+        "Meditation": {"checkbox": False}
     }
 }
 
