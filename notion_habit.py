@@ -1,6 +1,6 @@
 import os
 import requests
-from datetime import date
+from datetime import date, datetime
 
 # 从 GitHub Secrets 获取 Token 和 Database ID
 NOTION_TOKEN = os.environ['NOTION_TOKEN']
@@ -13,14 +13,19 @@ headers = {
 }
 
 today = date.today().isoformat()  # 例如 '2025-09-21'
+weekday = datetime.today().weekday()  # 0=周一, 1=周二, ..., 6=周日
 
-# Gym 列关联的页面 ID（需要提前获取 Gym 表中你要关联的页面 ID）
-gym_page_ids = [
-    "27519fe696fa801fa375d97eaf7105e8",  # 替换成 Gym 表中某个页面的 ID
-    "27519fe696fa8001b9c0c407d30dfde8",  # 替换成 Gym 表中某个页面的 ID
-    "27519fe696fa8060925ad8a87d58b2e4",  # 替换成 Gym 表中某个页面的 ID
-    "27519fe696fa8020ac72c260ecdc428c",  # 替换成 Gym 表中某个页面的 ID
-]
+# 根据星期几选择 Gym page_id
+if weekday == 0:  # 周一
+    gym_page_ids = ["27519fe696fa801fa375d97eaf7105e8"]
+elif weekday == 2:  # 周三
+    gym_page_ids = ["27519fe696fa8001b9c0c407d30dfde8"]
+elif weekday == 4:  # 周五
+    gym_page_ids = ["27519fe696fa8060925ad8a87d58b2e4"]
+elif weekday == 6:  # 周日
+    gym_page_ids = ["27519fe696fa80b18073d5e08b18588b"]
+else:  # 其他日子
+    gym_page_ids = ["27519fe696fa8020ac72c260ecdc428c"]
 
 data = {
     "parent": {"database_id": DATABASE_ID},
