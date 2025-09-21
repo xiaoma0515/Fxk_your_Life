@@ -24,6 +24,7 @@ gym_page_ids = [
 
 data = {
     "parent": {"database_id": DATABASE_ID},
+    "icon": {"type": "emoji", "emoji": "✅"},
     "properties": {
         "Day": {"title": [{"text": {"content": "Today"}}]},
         "Date": {"date": {"start": today}},
