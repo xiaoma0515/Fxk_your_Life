@@ -31,7 +31,7 @@ data = {
     "parent": {"database_id": DATABASE_ID},
     "icon": {"type": "emoji", "emoji": "✅"},
     "properties": {
-        "Day": {"title": [{"text": {"content": "Today"}}]},
+        "Day": {"title": [{"text": {"content": ""}}]},
         "Date": {"date": {"start": today}},
         "Gym": {"relation": [{"id": gid} for gid in gym_page_ids]},
         "Workout": {"checkbox": False},
